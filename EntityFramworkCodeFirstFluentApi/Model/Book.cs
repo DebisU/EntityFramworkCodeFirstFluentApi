@@ -11,6 +11,7 @@ namespace EntityFramworkCodeFirstFluentApi.Model
         public int BookID { get; set; }
         public string BookName { get; set; }
         public string ISBN { get; set; }
+        public int LibraryId { get; set; }
 
         public virtual ICollection<Review> Reviews { get; set; }
 

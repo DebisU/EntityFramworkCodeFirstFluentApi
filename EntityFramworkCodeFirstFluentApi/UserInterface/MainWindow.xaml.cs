@@ -24,15 +24,19 @@ namespace EntityFramworkCodeFirstFluentApi
     {
         private BookController booksController;
         private ReviewController reviewsController;
+        private LibraryController libraryConroller;
         private List<Book> myBooks;
+        private List<Library> myLibraries;
 
         public MainWindow()
         {
             InitializeComponent();
             booksController = new BookController();
             reviewsController = new ReviewController();
+            libraryConroller = new LibraryController();
             myBooks = new List<Book>();
-            LoadBooks();
+            myLibraries = new List<Library>();
+            LoadLibraries();
         }
 
         private void BtInsert_Click(object sender, RoutedEventArgs e)
@@ -42,6 +46,7 @@ namespace EntityFramworkCodeFirstFluentApi
                 BookID = TransformStringIntoInt(TbBookId.Text),
                 BookName = TbBookName.Text,
                 ISBN = TbISBN.Text,
+                LibraryId = TransformStringIntoInt(TbLibId.Text)
             };
 
 
@@ -58,7 +63,6 @@ namespace EntityFramworkCodeFirstFluentApi
                 ReviewID = TransformStringIntoInt(TbReviewId.Text),
                 BookID = TransformStringIntoInt(TbBookId.Text),
                 ReviewText = TbReviewText.Text
-                //Book = reviewDataGrid.ItemsSource as List<Review>
             };
 
 
@@ -67,7 +71,10 @@ namespace EntityFramworkCodeFirstFluentApi
             TbReviewBookId.Text = createdReview.ReviewID.ToString();
             MessageBox.Show("The review with " + createdReview.ToString() + " has been created successfully.");
             LoadBooks();
+            LoadReviewsGridByBookId(review.BookID);
         }
+
+
 
         private void BtUpdate_Click(object sender, RoutedEventArgs e)
         {
@@ -76,13 +83,13 @@ namespace EntityFramworkCodeFirstFluentApi
                 BookID = TransformStringIntoInt(TbBookId.Text),
                 BookName = TbBookName.Text,
                 ISBN = TbISBN.Text,
-                Reviews = reviewDataGrid.ItemsSource as List<Review>
+                LibraryId = TransformStringIntoInt(TbLibId.Text)
             };
 
             foreach (var item in book.Reviews)
             {
                 item.BookID = book.BookID;
-            }
+            }  /////////////////////////////////////////////////
 
             Book editedBook = booksController.Edit(book.BookID, book);
             MessageBox.Show("The book with " + editedBook.ToString() + " has been updated successfully.");
@@ -96,12 +103,13 @@ namespace EntityFramworkCodeFirstFluentApi
                 ReviewID = TransformStringIntoInt(TbReviewId.Text),
                 BookID = TransformStringIntoInt(TbReviewBookId.Text),
                 ReviewText = TbReviewText.Text
-                //Book = reviewDataGrid.ItemsSource as List<Review>
             };
 
             Review editedReview = reviewsController.Edit(review.ReviewID, review);
             MessageBox.Show("The review with " + editedReview.ToString() + " has been updated successfully.");
             LoadBooks();
+            LoadReviewsGridByBookId(review.BookID);
+
         }
 
         private void BtDelete_Click(object sender, RoutedEventArgs e)
@@ -119,9 +127,11 @@ namespace EntityFramworkCodeFirstFluentApi
             Review seletedReview = reviewDataGrid.SelectedItems[0] as Review;
             int selectedId = !string.IsNullOrEmpty(TbReviewId.Text) ? TransformStringIntoInt(TbReviewId.Text) : seletedReview.BookID;
 
-            Review deletedBook = reviewsController.Delete(selectedId);
-            MessageBox.Show("The Review with " + deletedBook.ToString() + "has been deleted succesfully");
+            Review deletedReview = reviewsController.Delete(selectedId);
+            MessageBox.Show("The Review with " + deletedReview.ToString() + "has been deleted succesfully");
             LoadBooks();
+            LoadReviewsGridByBookId(deletedReview.BookID);
+
         }
 
         private void dataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -166,6 +176,25 @@ namespace EntityFramworkCodeFirstFluentApi
             dataGrid.ItemsSource = myBooks;
         }
 
+        private void LoadLibraries()
+        {
+            myLibraries = libraryConroller.Index();
+            libDataGrid.ItemsSource = myLibraries;
+        }
+
+        private void LoadBooksGridByLibraryId(int id)
+        {
+            try
+            {
+                List<Book> load = booksController.Index().Where(b => b.LibraryId == id).ToList();
+                if (load != null)
+                {
+                    dataGrid.ItemsSource = load;
+                }
+            }
+            catch (Exception e) { }
+        }
+
         private int TransformStringIntoInt(string input)
         {
             int output;
@@ -173,5 +202,83 @@ namespace EntityFramworkCodeFirstFluentApi
             return output;
         }
 
+        private void BtInsertLibrary_Click(object sender, RoutedEventArgs e)
+        {
+            Library lib = new Library()
+            {
+                Id = TransformStringIntoInt(TbLibId.Text),
+                Name = TbLibName.Text,
+                address = TbLibAddress.Text
+            };
+
+
+            Library createdLibray = libraryConroller.Create(lib);
+            TbLibId.Text = createdLibray.Id.ToString();
+            MessageBox.Show("The review with " + createdLibray.ToString() + " has been created successfully.");
+            LoadLibraries();
+            LoadBooks();
+        }
+
+        private void BtUpdateLibrary_Click(object sender, RoutedEventArgs e)
+        {
+            Library library = new Library()
+            {
+                Id = TransformStringIntoInt(TbLibId.Text),
+                Name = TbLibName.Text,
+                address = TbLibAddress.Text
+ 
+            };
+
+            Library editedLibrary = libraryConroller.Edit(library.Id, library);
+            MessageBox.Show("The library with " + editedLibrary.ToString() + " has been updated successfully.");
+            LoadLibraries();
+            Test();
+
+        }
+
+        private void BtDeleteLibrary_Click(object sender, RoutedEventArgs e)
+        {
+            Library selectedLibrary = libDataGrid.SelectedItems[0] as Library;
+            int selectedId = !string.IsNullOrEmpty(TbBookId.Text) ? TransformStringIntoInt(TbBookId.Text) : selectedLibrary.Id;
+
+            Library deletedLibrary = libraryConroller.Delete(selectedId);
+            MessageBox.Show("The library with " + deletedLibrary.ToString() + "has been deleted succesfully");
+            LoadLibraries();
+        }
+
+        private void libDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                TbLibId.Text = ((Library)libDataGrid.SelectedItem).Id.ToString();
+                TbLibName.Text = ((Library)libDataGrid.SelectedItem).Name;
+                TbLibAddress.Text = ((Library)libDataGrid.SelectedItem).address;
+                LoadBooksGridByLibraryId(Convert.ToInt32(TbLibId.Text));
+            }
+            catch (Exception ex) { }
+
+        }
+
+        private void Test() {
+            List<Review> myRevs = new List<Review>();
+            myRevs.Add(new Review
+            {
+                BookID = 1,
+                Book = new Book(),
+                ReviewID = 1,
+                ReviewText = ""
+            });
+            Book book = new Book()
+            {
+                BookID = TransformStringIntoInt(TbBookId.Text),
+                BookName = TbBookName.Text,
+                ISBN = TbISBN.Text,
+                LibraryId = TransformStringIntoInt(TbLibId.Text),
+                Reviews = myRevs
+            };
+
+
+            Book createdBook = booksController.Create(book);
+        }
     }
 }

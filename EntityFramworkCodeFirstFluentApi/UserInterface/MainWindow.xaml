@@ -5,34 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EntityFramworkCodeFirstFluentApi"
         mc:Ignorable="d"
-        Title="Entity Framwork Code First Fluent API" Height="374.701" Width="852.864" ResizeMode="NoResize">
+        Title="Entity Framwork Code First Fluent API" Height="374.701" Width="1407.084" ResizeMode="NoResize">
     <Grid>
-        <Label x:Name="LbBookId" Content="Id" HorizontalAlignment="Left" Margin="13,37,0,0" VerticalAlignment="Top" Width="99"/>
-        <TextBox x:Name="TbBookId" HorizontalAlignment="Left" Height="23" Margin="135,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" IsEnabled="False"/>
 
-        <Label x:Name="LbBooKName" Content="Name" HorizontalAlignment="Left" Margin="13,68,0,0" VerticalAlignment="Top" Width="99"/>
-        <TextBox x:Name="TbBookName" HorizontalAlignment="Left" Height="23" Margin="135,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237"/>
-
-        <Label x:Name="LbISBN" Content="ISBN" HorizontalAlignment="Left" Margin="13,96,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.487,3.053" Width="99"/>
-        <TextBox x:Name="TbISBN" HorizontalAlignment="Left" Height="23" Margin="135,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237"/>
-
-        <DataGrid x:Name="dataGrid" IsReadOnly="True"  HorizontalAlignment="Left" Margin="10,142,0,0" VerticalAlignment="Top" CanUserAddRows="True" Width="376" Height="113" MouseDoubleClick="dataGrid_MouseDoubleClick"/>
-
-        <Button Height="23" HorizontalAlignment="Right" Margin="0,288,738,0" Name="BtInsert" VerticalAlignment="Top"  Width="75" Click="BtInsert_Click">Insert</Button>
-        <Button Height="23" HorizontalAlignment="Right" Margin="0,288,629,0" Name="BtUpdate" VerticalAlignment="Top"  Width="75" Click="BtUpdate_Click">Update</Button>
-        <Button Height="23" HorizontalAlignment="Right" Margin="0,288,512,0" Name="BtDelete" VerticalAlignment="Top"  Width="75" Click="BtDelete_Click">Delete</Button>
-
-        <DataGrid x:Name="reviewDataGrid" IsReadOnly="True"  HorizontalAlignment="Left" Margin="451,142,0,0" VerticalAlignment="Top" CanUserAddRows="True" Width="376" Height="113" MouseDoubleClick="reviewDataGrid_MouseDoubleClick"/>
-        <Label x:Name="LbReviewId" Content="Review Id" HorizontalAlignment="Left" Margin="451,37,0,0" VerticalAlignment="Top" Width="99"/>
-        <TextBox x:Name="TbReviewId" HorizontalAlignment="Left" Height="23" Margin="581,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" IsEnabled="False"/>
-        <Label x:Name="LbReviewBookId" Content="Book Id" HorizontalAlignment="Left" Margin="451,68,0,0" VerticalAlignment="Top" Width="99"/>
-        <TextBox x:Name="TbReviewBookId" HorizontalAlignment="Left" Height="23" Margin="581,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" IsEnabled="False"/>
-        <Label x:Name="LbReviewText" Content="Review Text" HorizontalAlignment="Left" Margin="451,96,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.487,3.053" Width="99"/>
-        <TextBox x:Name="TbReviewText" HorizontalAlignment="Left" Height="23" Margin="581,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="238"/>
-        <Button Height="23" HorizontalAlignment="Right" Margin="0,288,311,0" x:Name="BtInsertReview" VerticalAlignment="Top"  Width="75" Click="BtInsertReview_Click" Content="Insert"/>
-        <Button Height="23" HorizontalAlignment="Right" Margin="0,288,191,0" x:Name="BtUpdateReview" VerticalAlignment="Top"  Width="75" Click="BtUpdateReview_Click" Content="Update"/>
-        <Button Height="23" HorizontalAlignment="Right" Margin="0,288,80,0" x:Name="BtDeleteReview" VerticalAlignment="Top"  Width="75" Click="BtDeleteReview_Click" Content="Delete"/>
-        <Separator HorizontalAlignment="Left" Height="45" Margin="247,155,0,0" VerticalAlignment="Top" Width="340" RenderTransformOrigin="0.5,0.5">
+        <Label x:Name="LbLibId" Content="Id" HorizontalAlignment="Left" Margin="91,43,0,0" VerticalAlignment="Top" Width="99"/>
+        <TextBox x:Name="TbLibId" HorizontalAlignment="Left" Height="23" Margin="213,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" IsEnabled="False"/>
+        <Label x:Name="LbLibNae" Content="Name" HorizontalAlignment="Left" Margin="91,74,0,0" VerticalAlignment="Top" Width="99"/>
+        <TextBox x:Name="TbLibName" HorizontalAlignment="Left" Height="23" Margin="213,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237"/>
+        <Label x:Name="LbLibAddress" Content="Address" HorizontalAlignment="Left" Margin="91,102,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.487,3.053" Width="99"/>
+        <TextBox x:Name="TbLibAddress" HorizontalAlignment="Left" Height="23" Margin="213,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237"/>
+        <DataGrid x:Name="libDataGrid" IsReadOnly="True"  HorizontalAlignment="Left" Margin="88,148,0,0" VerticalAlignment="Top" CanUserAddRows="True" Width="376" Height="113" MouseDoubleClick="libDataGrid_MouseDoubleClick"/>
+        <Button Height="23" HorizontalAlignment="Right" Margin="0,288,1190,0" x:Name="BtInsert_Library" VerticalAlignment="Top"  Width="75" Click="BtInsertLibrary_Click" Content="Insert"/>
+        <Button Height="23" HorizontalAlignment="Right" Margin="0,288,1081,0" x:Name="BtUpdate_Library" VerticalAlignment="Top"  Width="75" Click="BtUpdateLibrary_Click" Content="Update"/>
+        <Button Height="23" HorizontalAlignment="Right" Margin="0,288,964,0" x:Name="BtDelete_Library" VerticalAlignment="Top"  Width="75" Click="BtDeleteLibrary_Click" Content="Delete"/>
+        <Separator HorizontalAlignment="Left" Height="45" Margin="331,160,0,0" VerticalAlignment="Top" Width="340" RenderTransformOrigin="0.5,0.5">
             <Separator.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -42,5 +28,44 @@
                 </TransformGroup>
             </Separator.RenderTransform>
         </Separator>
+
+
+
+        <Label x:Name="LbBookId" Content="Id" HorizontalAlignment="Left" Margin="543,43,0,0" VerticalAlignment="Top" Width="99"/>
+        <TextBox x:Name="TbBookId" HorizontalAlignment="Left" Height="23" Margin="665,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" IsEnabled="False"/>
+
+        <Label x:Name="LbBooKName" Content="Name" HorizontalAlignment="Left" Margin="543,74,0,0" VerticalAlignment="Top" Width="99"/>
+        <TextBox x:Name="TbBookName" HorizontalAlignment="Left" Height="23" Margin="665,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237"/>
+
+        <Label x:Name="LbISBN" Content="ISBN" HorizontalAlignment="Left" Margin="543,102,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.487,3.053" Width="99"/>
+        <TextBox x:Name="TbISBN" HorizontalAlignment="Left" Height="23" Margin="665,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237"/>
+
+        <DataGrid x:Name="dataGrid" IsReadOnly="True"  HorizontalAlignment="Left" Margin="540,148,0,0" VerticalAlignment="Top" CanUserAddRows="True" Width="376" Height="113" MouseDoubleClick="dataGrid_MouseDoubleClick"/>
+
+        <Button Height="23" HorizontalAlignment="Right" Margin="0,288,738,0" Name="BtInsert" VerticalAlignment="Top"  Width="75" Click="BtInsert_Click">Insert</Button>
+        <Button Height="23" HorizontalAlignment="Right" Margin="0,288,629,0" Name="BtUpdate" VerticalAlignment="Top"  Width="75" Click="BtUpdate_Click">Update</Button>
+        <Button Height="23" HorizontalAlignment="Right" Margin="0,288,512,0" Name="BtDelete" VerticalAlignment="Top"  Width="75" Click="BtDelete_Click">Delete</Button>
+
+        <DataGrid x:Name="reviewDataGrid" IsReadOnly="True"  HorizontalAlignment="Left" Margin="981,148,0,0" VerticalAlignment="Top" CanUserAddRows="True" Width="376" Height="113" MouseDoubleClick="reviewDataGrid_MouseDoubleClick"/>
+        <Label x:Name="LbReviewId" Content="Review Id" HorizontalAlignment="Left" Margin="981,43,0,0" VerticalAlignment="Top" Width="99"/>
+        <TextBox x:Name="TbReviewId" HorizontalAlignment="Left" Height="23" Margin="1111,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" IsEnabled="False"/>
+        <Label x:Name="LbReviewBookId" Content="Book Id" HorizontalAlignment="Left" Margin="981,74,0,0" VerticalAlignment="Top" Width="99"/>
+        <TextBox x:Name="TbReviewBookId" HorizontalAlignment="Left" Height="23" Margin="1111,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" IsEnabled="False"/>
+        <Label x:Name="LbReviewText" Content="Review Text" HorizontalAlignment="Left" Margin="981,102,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.487,3.053" Width="99"/>
+        <TextBox x:Name="TbReviewText" HorizontalAlignment="Left" Height="23" Margin="1111,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="238"/>
+        <Button Height="23" HorizontalAlignment="Right" Margin="0,288,311,0" x:Name="BtInsertReview" VerticalAlignment="Top"  Width="75" Click="BtInsertReview_Click" Content="Insert"/>
+        <Button Height="23" HorizontalAlignment="Right" Margin="0,288,191,0" x:Name="BtUpdateReview" VerticalAlignment="Top"  Width="75" Click="BtUpdateReview_Click" Content="Update"/>
+        <Button Height="23" HorizontalAlignment="Right" Margin="0,288,80,0" x:Name="BtDeleteReview" VerticalAlignment="Top"  Width="75" Click="BtDeleteReview_Click" Content="Delete"/>
+        <Separator HorizontalAlignment="Left" Height="45" Margin="777,161,0,0" VerticalAlignment="Top" Width="340" RenderTransformOrigin="0.5,0.5">
+            <Separator.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Separator.RenderTransform>
+        </Separator>
+        
     </Grid>
 </Window>

@@ -12,6 +12,7 @@ namespace EntityFramworkCodeFirstFluentApi
     {
         public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
+        public virtual DbSet<Library> Libraries { get; set; }
         public Context()
             : base("name=BookDbContext")
         {
@@ -21,6 +22,7 @@ namespace EntityFramworkCodeFirstFluentApi
         {
             SetUpBookModel(modelBuilder);
             SetUpReviewModel(modelBuilder);
+            SetUpLibraryModel(modelBuilder);
 
             base.OnModelCreating(modelBuilder);
         }
@@ -30,11 +32,13 @@ namespace EntityFramworkCodeFirstFluentApi
             modelBuilder.Entity<Book>().ToTable("books");
             modelBuilder.Entity<Book>().HasKey<int>(b => b.BookID);
             modelBuilder.Entity<Book>().Property(b => b.BookID)
-                .HasColumnName("BookID");
+                        .HasColumnName("BookID");
             modelBuilder.Entity<Book>().Property(b => b.BookName)
                     .HasColumnName("BookName");
             modelBuilder.Entity<Book>().Property(b => b.ISBN)
                         .HasColumnName("ISBN");
+            modelBuilder.Entity<Book>().Property(r => r.LibraryId)
+                        .HasColumnName("Library_Id");
         }
 
         private void SetUpReviewModel(DbModelBuilder modelBuilder)
@@ -47,6 +51,19 @@ namespace EntityFramworkCodeFirstFluentApi
                     .HasColumnName("BookID");
             modelBuilder.Entity<Review>().Property(r => r.ReviewText)
                         .HasColumnName("ReviewText");
+        }
+
+        private void SetUpLibraryModel(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Library>().ToTable("library");
+            modelBuilder.Entity<Library>().HasKey<int>(r => r.Id);
+            modelBuilder.Entity<Library>().Property(r => r.Id)
+                .HasColumnName("Id");
+            modelBuilder.Entity<Library>().Property(r => r.Name)
+                    .HasColumnName("Name");
+            modelBuilder.Entity<Library>().Property(r => r.address)
+                        .HasColumnName("address");
+
         }
     }
 }

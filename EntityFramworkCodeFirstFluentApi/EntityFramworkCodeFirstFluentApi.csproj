@@ -82,14 +82,24 @@
     </Compile>
     <Compile Include="Context.cs" />
     <Compile Include="Controller\BookController.cs" />
+    <Compile Include="Controller\LibraryController.cs" />
     <Compile Include="Controller\ReviewController.cs" />
     <Compile Include="Infrastructure\IDbController.cs" />
     <Compile Include="Migrations\201708251347310_initial.cs" />
     <Compile Include="Migrations\201708251347310_initial.Designer.cs">
       <DependentUpon>201708251347310_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708280916539_libraries.cs" />
+    <Compile Include="Migrations\201708280916539_libraries.Designer.cs">
+      <DependentUpon>201708280916539_libraries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708281046201_book_lib_id.cs" />
+    <Compile Include="Migrations\201708281046201_book_lib_id.Designer.cs">
+      <DependentUpon>201708281046201_book_lib_id.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Book.cs" />
+    <Compile Include="Model\Library.cs" />
     <Compile Include="Model\Review.cs" />
     <Compile Include="UserInterface\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -112,6 +122,12 @@
     </Compile>
     <EmbeddedResource Include="Migrations\201708251347310_initial.resx">
       <DependentUpon>201708251347310_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708280916539_libraries.resx">
+      <DependentUpon>201708280916539_libraries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708281046201_book_lib_id.resx">
+      <DependentUpon>201708281046201_book_lib_id.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
